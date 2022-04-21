@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"gomysql/db"
 	"html/template"
 	"log"
 	"net/http"
@@ -15,13 +16,15 @@ var templates = template.Must(template.New("T").ParseGlob("templates/**/*.html")
 
 //Handler
 func Index(res http.ResponseWriter, r *http.Request) {
-	inicio := Data{`> TRACEROUTE RATAALADA.COM 
-	POS-0-3-0-0-CR01.ARKAM.GOTHAMDATA.NET`}
+	db.ConectarDb()
+	inicio := Data{"> " + db.ObtenerAcertijo()}
 
 	err := templates.ExecuteTemplate(res, "index.html", inicio)
 	if err != nil {
 		fmt.Print(err)
 	}
+
+	fmt.Println(db.ObtenerAcertijo())
 }
 
 func main() {
