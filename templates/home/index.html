@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../estaticos/css/style.css">
     <title> <?> </title>
+    <link rel="stylesheet" href="../../estaticos/css/main.css">
+    <script src="../../estaticos/js/main.js" defer></script>
 </head>
 <body>
-    <div id="consola">
-        <div class="loading">
-            Cargando... 
+    <div class="console">
+        <div class=" console-history">
+    <div class="console-input-log">{{ .Textoinicial }}</div>
+            <div class="console-output-log"> <?> </div>
         </div>
-        <div class="bienvenida-no">
-            {{ .Textoinicial }}
-        </div>
+        <input class="console-input" type="text" autofocus spellcheck="false">
     </div>
-    <script src="../estaticos/js/index.js"></script>
 </body>
 </html>

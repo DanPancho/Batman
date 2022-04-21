@@ -14,10 +14,11 @@ type Data struct {
 var templates = template.Must(template.New("T").ParseGlob("templates/**/*.html"))
 
 //Handler
-func Index(rw http.ResponseWriter, r *http.Request) {
-	inicio := Data{`TRACEROUTE RATAALADA.COM 
+func Index(res http.ResponseWriter, r *http.Request) {
+	inicio := Data{`> TRACEROUTE RATAALADA.COM 
 	POS-0-3-0-0-CR01.ARKAM.GOTHAMDATA.NET`}
-	err := templates.ExecuteTemplate(rw, "index.html", inicio)
+
+	err := templates.ExecuteTemplate(res, "index.html", inicio)
 	if err != nil {
 		fmt.Print(err)
 	}
