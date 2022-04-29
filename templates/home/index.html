@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://www.rataalada.com/images/favicon.ico">
     <title> <?> </title>
     <link rel="stylesheet" href="../../estaticos/css/main.css">
     <script src="../../estaticos/js/main.js" defer></script>
@@ -11,10 +12,16 @@
 <body>
     <div class="console">
         <div class=" console-history">
-    <div class="console-input-log">{{ .Textoinicial }}</div>
-            <div class="console-output-log"> <?> </div>
+            {{ range .Datos}}
+                <div class="console-input-log">{{ .Acertijo }}</div>
+                <div class="console-output-log"> <?> {{ .Respuesta}} </div>
+            {{end}}
         </div>
-        <input class="console-input" type="text" autofocus spellcheck="false">
+
+        <form action="/" method="get">
+            <input name="input" class="console-input" type="text" autofocus spellcheck="false">
+        </form>
+        
     </div>
 </body>
 </html>

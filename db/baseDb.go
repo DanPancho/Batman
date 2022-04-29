@@ -13,8 +13,8 @@ var conexionDb *sql.DB
 
 type Acertijo struct {
 	id        int
-	acertijo  string
-	respuesta string
+	Acertijo  string
+	Respuesta string
 }
 type Acertijos []Acertijo
 
@@ -28,19 +28,19 @@ func ConectarDb() {
 	conexionDb = cn
 }
 
-func ObtenerAcertijo() string {
-	sql := "SELECT * FROM acertijos WHERE id = 2"
+func ObtenerAcertijo(id int) []Acertijo {
+	sql := "SELECT * FROM acertijos WHERE id = ?"
 	acertijos := Acertijos{}
-	if data, err := conexionDb.Query(sql); err != nil {
+	if data, err := conexionDb.Query(sql, id); err != nil {
 		fmt.Print(err)
 	} else {
 		for data.Next() {
 			acertijo := Acertijo{}
-			data.Scan(&acertijo.id, &acertijo.acertijo, &acertijo.respuesta)
+			data.Scan(&acertijo.id, &acertijo.Acertijo, &acertijo.Respuesta)
 			acertijos = append(acertijos, acertijo)
 		}
 	}
-	return acertijos[0].acertijo
+	return acertijos
 }
 
 //_ "github.com/go-sql-driver/mysql"
